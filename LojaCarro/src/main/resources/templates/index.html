@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+
+<div class="container mt-4">
+	<div class="text-center mb-4">
+		<h1 class="h3">Listagem de veículos</h1>
+	</div>
+	<div>
+		<a th:href="@{/new}" class="btn btn-primary">Novo</a>
+	</div>
+	<table class="table mt-4">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>MARCA</th>
+			<th>MODELO</th>
+			<th>AÇÕES</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="carro : ${carros}">
+			<td th:text="${carro.id}"></td>
+			<td th:text="${carro.marca}"></td>
+			<td th:text="${carro.modelo}"></td>
+			<td>
+				<a th:href="@{/editar/}+${carro.id}" class="btn btn-warning">Editar</a>
+				<a th:onclick="eliminar([[${carro.id}]])" class="btn btn-danger">Deletar</a>
+				<!-- <a th:href="@{/deletar/}+${carro.id}" class="btn btn-danger">Deletar</a> -->
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</div>
+<script
+  src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="custom.js"></script>
+</body>
+</html>
